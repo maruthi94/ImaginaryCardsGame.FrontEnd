@@ -1,10 +1,43 @@
 import { Component } from '@angular/core';
+import { map, Observable, tap } from 'rxjs';
+import { EXAMPLE_CARDS } from './constants';
+import { ImaginaryCardsGameService } from './imaginary-cards-game.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'ImaginaryCardsGame.Frontend';
+    public cards = '';
+    public selectedExampleValue:any = '';
+    public examples = EXAMPLE_CARDS;
+    public result$: Observable<string> | null = null;
+    public isSortingInProgress: boolean = false;
+
+    constructor(private imaginaryCardsGameService: ImaginaryCardsGameService) {}
+
+    public sort() {
+        const cardList = this.cards.split(',').map(c => c.trim());
+        this.isSortingInProgress = true;
+        this.result$ = this.imaginaryCardsGameService.sortCards(cardList).pipe(
+            tap(() => {
+                this.isSortingInProgress = false;
+            }),
+            map(res => res.join(', '))
+        );
+    }
+    public handleInputChange() {
+        this.result$ = null;
+    }
+
+    public handleExampleSelection(event:any){
+      console.log(event);
+      this.selectedExampleValue = "";
+    }
+
+    public clearInput(){
+      this.cards = "";
+      this.result$ = null;
+    }
 }

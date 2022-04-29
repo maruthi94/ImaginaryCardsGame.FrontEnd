@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  imaginaryCardsGameServiceURL: 'https://imaginary-cards-game-service.azurewebsites.net/api'
 };
