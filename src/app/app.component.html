@@ -25,14 +25,19 @@
       <button [disabled]="!cardsInput.valid || isSortingInProgress" mat-flat-button color="primary" class="sort-button"
         (click)="sort()">Sort The Cards</button>
 
-      <div class="result-container" *ngIf="result$ | async as sortedCards">
+      <div class="result-container" *ngIf="result$ | async as sortedCardsResponse">
         <div class="result" [class.result-hide]="isSortingInProgress">
-          <h4 class="result-header">Sorted Cards</h4>
-          <ng-container>
-            <p class="result-content">
-              {{sortedCards }}
+          <ng-container *ngIf="sortedCardsResponse.error === undefined; else errorResponse">
+            <h4 class="result-header">Sorted Cards</h4>
+            <p class="result-content success-result">
+              {{sortedCardsResponse.result | json }}
             </p>
           </ng-container>
+          <ng-template #errorResponse>
+            <p class="result-content error-result">
+              {{sortedCardsResponse.error}}
+            </p>
+          </ng-template>
         </div>
       </div>
 

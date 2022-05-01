@@ -19,37 +19,43 @@
     margin: 2rem 0;
 }
 
-.cards-select{
-  width: 100%;
-  margin-bottom: 1rem;
+.cards-select {
+    width: 100%;
+    margin-bottom: 1rem;
 }
 
 .result-container {
-  height: 92px;
-  margin-top: 1rem;
-  .result {
-    background-color: rgba($color: #000000, $alpha: 0.08);
-    opacity: 0.8;
-    padding: 1rem .8rem;
-    .result-header {
-        margin-bottom: .5rem ;
-    }
-    .result-hide {
-      visibility: hidden;
-    }
-    .result-content {
-      min-height: 60px;
-      padding: .8rem .8rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0;
-      font-weight: 600;
-      background-color: #c8e6c9;
-    }
-}
-}
+    height: 92px;
+    margin-top: 1rem;
+    .result {
+        background-color: rgba($color: #000000, $alpha: 0.08);
+        opacity: 0.8;
+        padding: 1rem 0.8rem;
+        .result-header {
+            margin-bottom: 0.5rem;
+        }
+        .result-hide {
+            visibility: hidden;
+        }
+        .result-content {
+            min-height: 60px;
+            padding: 0.8rem 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
 
+        .success-result {
+            font-weight: 600;
+            background-color: #c8e6c9;
+        }
+
+        .error-result {
+            background-color: #ffa4a2;
+        }
+    }
+}
 
 .sort-button {
     display: flex;
@@ -57,11 +63,11 @@
 }
 
 .divider-text {
-  display: flex;
-  width: 100%;
-  justify-content: center;
+    display: flex;
+    width: 100%;
+    justify-content: center;
 
-  & h1{
-    color: rgba($color: #000000, $alpha: 0.4);
-  }
+    & h1 {
+        color: rgba($color: #000000, $alpha: 0.4);
+    }
 }
